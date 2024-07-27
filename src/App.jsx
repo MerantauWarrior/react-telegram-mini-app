@@ -11,8 +11,12 @@ function App() {
   const [userData, setUserData] = useState()
 
   useEffect(() => {
+    WebApp.setHeaderColor('#c85d9f')
     if (WebApp.initDataUnsafe.user){
       setUserData(WebApp.initDataUnsafe.user)
+    }
+    if (!WebApp.isExpanded){
+      WebApp.expand()
     }
   },[])
 
@@ -25,7 +29,7 @@ function App() {
           <li>last_name : {userData.last_name}</li>
           <li>username : {userData.username}</li>
           <li>language_code : {userData.language_code}</li>
-          <li>is_premium : {userData.is_premium}</li>
+          <li>is_premium : {userData.is_premium ? "Yes" : "No"}</li>
           <li> added_to_attachment_menu: {userData.added_to_attachment_menu}</li>
           <li>allows_write_to_pm : {userData.allows_write_to_pm}</li>
           <li>photo_url : {userData.photo_url}</li>
